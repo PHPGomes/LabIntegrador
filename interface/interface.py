@@ -6,6 +6,8 @@ import threading
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
+set = 10
+
 def funcao():
     return 0
 
@@ -16,18 +18,27 @@ root.title("Interface Supervisório - Testes")
 root.geometry("1366x768")
 
 # Texto
-label = tk.Label(root, text="Olá Mundo!")
+label = tk.Label(root, text=("Set Point: "+ str(set)))
 label.pack()
 
-# Botao
-button = tk.Button(root, text="Clique aqui", command=funcao)
-button.pack()
-button.
+# Texto
+label = tk.Label(root, text="")
+label.pack()
 
 # Caixa de texto
 entrada = tk.Entry(root)
 entrada.pack()
 valor = entrada.get()  # Lê texto inserido
+
+# Texto
+label = tk.Label(root, text="")
+label.pack()
+
+# Botao
+button = tk.Button(root, text="Confirmar", command=funcao)
+button.pack()
+
+
 
 
 
