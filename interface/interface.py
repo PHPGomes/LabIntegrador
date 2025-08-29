@@ -40,7 +40,19 @@ button = tk.Button(root, text="Confirmar", command=funcao)
 button.pack()
 
 
-
+# Função para atualizar gráfico em thread separada
+def atualizar_grafico2():
+    global rodando
+    while rodando:
+        y_dados.append(random.uniform(-180, 180))  # Simula dados do encoder
+        x_dados.append(len(y_dados))
+        linha.set_ydata(y_dados)
+        linha.set_xdata(x_dados)
+        ax.relim()
+        ax.autoscale_view()
+        canvas2.draw()
+        time.sleep(0.2)  # Atualiza a cada 200ms
+        
 
 # Função para atualizar gráfico em thread separada
 def atualizar_grafico1():
@@ -65,19 +77,11 @@ ax.set_xlabel("Tempo")
 ax.set_ylabel("Ângulo (graus)")
 ax.set_title("Gráfico do Encoder Pendulo")
 
+# Adicionar ao Tkinter
+canvas1 = FigureCanvasTkAgg(fig, master=root)
+canvas1.get_tk_widget().place(x=25, y=180, width=600, height=300)
 
-# Função para atualizar gráfico em thread separada
-def atualizar_grafico2():
-    global rodando
-    while rodando:
-        y_dados.append(random.uniform(-180, 180))  # Simula dados do encoder
-        x_dados.append(len(y_dados))
-        linha.set_ydata(y_dados)
-        linha.set_xdata(x_dados)
-        ax.relim()
-        ax.autoscale_view()
-        canvas2.draw()
-        time.sleep(0.2)  # Atualiza a cada 200ms
+
 
 # Criar figura Matplotlib com tamanho definido
 fig, ax = plt.subplots(figsize=(2, 1))
@@ -94,9 +98,7 @@ ax.set_title("Gráfico do Encoder posição")
 
 
 
-# Adicionar ao Tkinter
-canvas1 = FigureCanvasTkAgg(fig, master=root)
-canvas1.get_tk_widget().place(x=25, y=180, width=600, height=300)
+
 
 canvas2 = FigureCanvasTkAgg(fig, master=root)
 canvas2.get_tk_widget().place(x=730, y=180, width=600, height=300)
