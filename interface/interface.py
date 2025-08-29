@@ -99,7 +99,7 @@ canvas1 = FigureCanvasTkAgg(fig, master=root)
 canvas1.get_tk_widget().place(x=25, y=180, width=600, height=300)
 
 canvas2 = FigureCanvasTkAgg(fig, master=root)
-canvas2.get_tk_widget().place(x=800, y=180, width=600, height=300)
+canvas2.get_tk_widget().place(x=730, y=180, width=600, height=300)
 
 # Botão para sair
 rodando = True
