@@ -1,7 +1,7 @@
 // Definições de pinos (Conferir no esquemático)
-#define IN1  26   // Controle do motor - direção
-#define IN2  27   // Controle do motor - direção
-#define PWM  14   // PWM (velocidade)
+#define IN1  30   // Controle do motor - direção
+#define IN2  31   // Controle do motor - direção
+#define PWM  29   // PWM (velocidade)
 
 bool dieita;
 
@@ -15,6 +15,17 @@ void setup() {
 void loop() {
   
 }
+
+
+void Controle(float sinal){
+  if(sinal>=0){
+    movDireita(map(sinal,0,1,0,255));//map(valor, deMenor, deMaior, paraMenor, paraMaior); confirmar sinal de controle para arrumar
+  }
+  else{
+    movEsquerda(map(-sinal,0,1,0,255));//map(valor, deMenor, deMaior, paraMenor, paraMaior); confirmar sinal de controle para arrumar
+  }
+}
+
 
 void movDireita(int pwm){
   if(dieita){
@@ -32,6 +43,7 @@ void movDireita(int pwm){
     }
   direita = true;
 }
+
 
 void movEsquerda(int pwm){
   if(direita){
